@@ -6,3 +6,24 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+.login-input {
+    border: 2px solid #ccc;
+}
+.login-input:focus {
+    border: 2px solid #638C6D;
+    outline: none;
+    box-shadow: none;
+}
+.login-input::placeholder {
+    color: grey;
+}
+.login-button {
+    background-color: #638C6D;
+    color: white;
+    border: none;
+}
+.login-button:hover {
+    background-color: #4B5945;
+}
