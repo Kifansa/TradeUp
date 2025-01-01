@@ -39,4 +39,19 @@ class Category extends Model
     {
         return $this->belongsToMany('Modules\Shop\Entities\Product', 'shop_categories_products', 'product_id', 'category_id');
     }
+
+    public static function childIDs($parentID = null)
+    {
+        $categories = Category::select('id', 'name', 'parent_id')
+            ->where('parent_id', $parentID)
+            ->get();
+
+        $childIDs = [];
+        foreach ($categories as $category) {
+            $childIDs[] = $category->id;
+            $childIDs = array_merge($childIDs, Category::childIDs($category->id));
+        }
+
+        return $childIDs; // Add this line to return the array of child IDs
+    }
 }

@@ -17,9 +17,9 @@
     @endif
     <div class="sidebar-widget mt-4">
         <div class="widget-title">
-            <h5>Price Range</h5>
+            {{-- <h5>Price Range</h5> --}}
         </div>
-        <div class="widget-content shop-by-price">
+        {{-- <div class="widget-content shop-by-price">
             <form method="GET" action="?">
                 <div class="price-filter">
                     <div class="price-filter-inner">
@@ -35,6 +35,6 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> --}}
     </div>
 </div>

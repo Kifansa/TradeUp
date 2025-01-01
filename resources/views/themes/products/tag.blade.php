@@ -1,4 +1,4 @@
-@extends('themes.indotoko.layouts.app')
+@extends('themes.layouts.app')
 
 @section('content')
 <section class="breadcrumb-section pb-4 pb-md-4 pt-4 pt-md-4">
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <aside class="col-lg-3 col-md-4 mb-6 mb-md-0">
-                @include('themes.indotoko.products.sidebar', ['categories' => $categories])
+                @include('themes.products.sidebar', ['categories' => $categories])
             </aside>
             <section class="col-lg-9 col-md-12 products">
                 <div class="card mb-4 bg-light border-0 section-header">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="row">
                     @forelse ($products as $product)
-                        @include('themes.indotoko.products.product_box', ['product' => $product])
+                        @include('themes.products.product_box', ['product' => $product])
                     @empty
                         <p>Product empty</p>
                     @endforelse
