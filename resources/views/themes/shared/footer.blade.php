@@ -2,7 +2,7 @@
     <div class="container pt-5">
         <div class="row row-content">
             <div class="col-md-6">
-                <h1 class="logo-brand">Indo <span>Toko</span></h1>
+                <h1 class="logo-brand">Trade <span>Up</span></h1>
                 <p>Lorem ipsum dolor sit amet</p>
             </div>
             <div class="col-md-3 mt-4 mt-sm-0">
