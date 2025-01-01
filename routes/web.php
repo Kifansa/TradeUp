@@ -15,11 +15,12 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('home');
 });
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-});
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/home', [HomeController::class, 'index'])->name('home');
+// });
+
