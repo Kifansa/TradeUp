@@ -1,4 +1,5 @@
 @extends('themes.layouts.app')
+@include('themes.shared.slider')
 
 @section('content')
     <!-- Popular -->

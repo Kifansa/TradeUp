@@ -4,11 +4,15 @@ namespace Modules\Shop\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Controller;
+use Modules\Shop\Entities\Product;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -16,7 +20,11 @@ class ProductController extends Controller
     public function index()
     {
         // return view('shop::index');
-        return $this->loadTheme('products.indecx', $this->data);
+
+        $this->data['products'] = Product::paginate($this->perPage);
+        // $this->data['products'] = Product::paginate($this->perPage);
+        
+        return $this->loadTheme('products.index', $this->data);
     }
 
     /**

@@ -20,6 +20,6 @@ class Controller extends BaseController
 
     protected function loadTheme($view, $data = [])
     {
-        return view('themes/'. env('APP_THEME', 'default') . '/' . $view , $data); 
+        return view('themes/' . $view , $data); 
     }
 }
