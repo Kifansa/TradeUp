@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use Modules\Shop\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +16,16 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('home');
 });
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-});
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/home', [HomeController::class, 'index'])->name('home');
+// });
+
