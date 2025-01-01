@@ -7,5 +7,7 @@
     "providers": [
         "Modules\\Shop\\Providers\\ShopServiceProvider"
     ],
-    "files": []
+    "files": [
+        "helpers/shop_helper.php"
+    ]
 }

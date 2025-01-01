@@ -19,11 +19,11 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('themes/indotoko/assets/img/slide1.jpg') }}" class="d-block w-100"
+                    <img src="{{ asset('themes/assets/img/slide1.jpg') }}" class="d-block w-100"
                         alt="slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('themes/indotoko/assets/img/slide2.jpg') }}" class="d-block w-100"
+                    <img src="{{ asset('themes/assets/img/slide2.jpg') }}" class="d-block w-100"
                         alt="slide 2">
                 </div>
             </div>

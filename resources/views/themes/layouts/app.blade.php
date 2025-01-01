@@ -13,7 +13,6 @@
 
 <body>
     @include('themes.shared.header')
-    @include('themes.shared.slider')
     @yield('content')
     @include('themes.shared.footer')
 </body>
