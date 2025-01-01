@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <title>IndoToko: Official Site</title>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/themes/main.css'])
+    <title>TradeUp</title>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/main.css'])
 </head>
 
 <body>
