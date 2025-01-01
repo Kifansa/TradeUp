@@ -6,12 +6,17 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Modules\Shop\Entities\Product;
+use Modules\Shop\Repositories\Front\Interfaces\ProductRepositoryInterface;
 
 class ProductController extends Controller
 {
-    public function __construct()
+    protected $productRepository;
+    
+    public function __construct(ProductRepositoryInterface $productRepository)
     {
         parent::__construct();
+
+        $this->productRepository = $productRepository;
     }
     /**
      * Display a listing of the resource.
@@ -21,9 +26,17 @@ class ProductController extends Controller
     {
         // return view('shop::index');
 
-        $this->data['products'] = Product::paginate($this->perPage);
+        // $product = Product::get();
+        // dd($product);
         // $this->data['products'] = Product::paginate($this->perPage);
+        // $this->data['products'] = Product::paginate($this->perPage);
+
+        $options = [
+            'per_page' => $this->perPage,
+        ];
         
+        $this->data['products'] = $this->productRepository->findAll($options);
+        // dd($this->data);
         return $this->loadTheme('products.index', $this->data);
     }
 
