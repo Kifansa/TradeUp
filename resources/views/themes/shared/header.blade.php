@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light fixed-top py-4 shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="#">TradeUp</a>
+        <a class="navbar-brand" href="{{ route('home') }}">TradeUp</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,8 +40,8 @@
                         @csrf
                     </form>
                 </li>
-                <!-- Jika belum login, tampilkan tombol login dan register -->
                 @else
+                <!-- Jika belum login, tampilkan tombol login dan register -->
                 <li class="nav-item mt-5 mt-lg-0 text-center">
                     <a class="nav-link btn-second me-lg-3" href="{{ route('login') }}">Login</a>
                 </li>
@@ -53,3 +53,6 @@
         </div>
     </div>
 </nav>
+
+<!-- Tambahkan SweetAlert di bawah konten header -->
+@include('sweetalert::alert')

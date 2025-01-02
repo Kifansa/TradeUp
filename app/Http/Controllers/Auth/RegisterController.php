@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     /*
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     | Register Controller
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
     | validation and creation. By default this controller uses a trait to
@@ -31,6 +31,7 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    // Validator for registration form
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -40,12 +41,18 @@ class RegisterController extends Controller
         ]);
     }
 
+    // Create a new user after registration
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // Flash success message using SweetAlert
+        alert()->success('Welcome to TradeUp', 'Registration Successful');
+
+        return $user;
     }
 }
