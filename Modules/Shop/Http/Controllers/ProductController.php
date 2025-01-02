@@ -139,6 +139,14 @@ class ProductController extends Controller
 
         $this->data['product'] = $product;
 
+        $whatsappMessage = urlencode("Halo, saya tertarik dengan produk: " . $product->name);
+
+        $whatsappNumber = "6282332565991";
+
+        $whatsappUrl = "https://wa.me/$whatsappNumber?text=$whatsappMessage";
+
+        $this->data['whatsappUrl'] = $whatsappUrl;
+
         return $this->loadTheme('products.show', $this->data);
     }
 

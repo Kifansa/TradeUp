@@ -101,4 +101,9 @@ class Product extends Model
     {
         return number_format($this->price);
     }
+
+    public function getStockStatusLabelAttribute()
+    {
+        return self::STOCK_STATUSES[$this->stock_status];
+    }
 }
