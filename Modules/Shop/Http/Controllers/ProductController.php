@@ -40,15 +40,8 @@ class ProductController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index(Request $request)
+    public function index(Request $request, $productSlug)
     {
-        // return view('shop::index');
-
-        // $product = Product::get();
-        // dd($product);
-        // $this->data['products'] = Product::paginate($this->perPage);
-        // $this->data['products'] = Product::paginate($this->perPage);
-
         $options = [
             'per_page' => $this->perPage,
         ];
@@ -64,6 +57,23 @@ class ProductController extends Controller
 
         $this->data['products'] = $this->productRepository->findAll($options);
         // dd($this->data);
+
+        $sku = Arr::last(explode('-', $productSlug));
+
+        $product = $this->productRepository->findBySKU($sku);
+
+        $this->data['product'] = $product;
+
+        $whatsappMessage = urlencode("Halo, saya tertarik dengan produk: " . $product->name);
+
+        $whatsappNumber = "6282332565991";
+
+        $whatsappUrl = "https://wa.me/$whatsappNumber?text=$whatsappMessage";
+
+        $this->data['whatsappUrl'] = $whatsappUrl;
+
+        dd($this->data['products']);
+
         return $this->loadTheme('products.index', $this->data);
     }
 

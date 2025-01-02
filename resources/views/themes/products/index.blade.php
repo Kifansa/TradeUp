@@ -26,7 +26,6 @@
                     <div class="row">
                         <div class="d-lg-flex justify-content-between align-items-center">
                             <div class="mb-3 mb-lg-0">
-                                {{-- <p class="mb-0"> <span class="text-dark">24 </span> Products found </p> --}}
                                 &nbsp;
                             </div>
                             <div class="d-flex mt-2 mt-lg-0">
