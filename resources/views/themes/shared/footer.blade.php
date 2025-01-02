@@ -1,4 +1,4 @@
-<footer>
+<footer style="background-color: #118B50; color: #ffff">
     <div class="container pt-5">
         <div class="row row-content">
             <div class="col-md-6">
@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-3 mt-4 mt-sm-0">
                 <h3 class="mb-3">Company</h3>
-                <a href="#">john@example.com</a>
+                <a href="#">Kelompok Paw</a>
                 <p>Jln. Ubi VII, No 5 Surabaya Indonesia</p>
             </div>
         </div>
