@@ -2,6 +2,9 @@
 @include('themes.shared.slider')
 
 @section('content')
+    <!-- SweetAlert -->
+    @include('sweetalert::alert') <!-- Include SweetAlert alert -->
+
     <!-- Popular -->
     <section class="popular">
         <div class="container">

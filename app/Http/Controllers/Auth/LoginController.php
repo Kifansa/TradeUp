@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
     /*
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     | Login Controller
-    |--------------------------------------------------------------------------
+    |----------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
     | redirecting them to your home screen. The controller uses a trait
@@ -36,5 +38,27 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    /**
+     * Override the logout method to display a SweetAlert message
+     */
+    public function logout()
+    {
+        Auth::logout();
+
+        // Display SweetAlert after logout
+        session()->flash('alert-success', 'You have successfully logged out.');
+
+        return redirect('/');
+    }
+
+    /**
+     * After successful login, display success message using SweetAlert.
+     */
+    public function authenticated($request, $user)
+    {
+        alert()->success('Welcome back, ' . $user->name . '!', 'Login Successful');
+        return redirect()->intended($this->redirectTo);
     }
 }
