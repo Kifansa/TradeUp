@@ -13,6 +13,37 @@
         </div>
     </section>
     <section class="main-content">
+        <style>
+            .whatsapp-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 20px;
+                background-color: #25d366;
+                /* Warna WhatsApp */
+                color: white;
+                text-align: center;
+                border-radius: 50px;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+
+            .whatsapp-button:hover {
+                background-color: #e0e0e0;
+                /* Warna WhatsApp saat hover */
+            }
+
+            .whatsapp-icon {
+                margin-right: 8px;
+            }
+
+            .whatsapp-text {
+                display: flex;
+                align-items: center;
+            }
+        </style>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -87,9 +118,13 @@
                         <hr class="my-6">
                         <div class="product-share">
                             <a href="{{ $whatsappUrl }}" class="whatsapp-button" target="_blank">
-                                <i class="bx bxl-whatsapp"></i>Hubungi Kami di Whatsapp
+                                <span class="whatsapp-icon">
+                                    <i class="bx bxl-whatsapp" style="font-size: 50px;"></i>
+                                </span>
+                                <span class="whatsapp-text">Hubungi Kami di Whatsapp</span>
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>
