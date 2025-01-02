@@ -9,10 +9,7 @@
                 <h3 class="mb-3">Navigation</h3>
                 <ul class="p-0">
                     <li><a href="#">Home</a></li>
-                    <li class="mt-3"><a href="#">Best Seller</a></li>
-                    <li class="mt-3"><a href="#">Category</a></li>
-                    <li class="mt-3"><a href="#">Comunity</a></li>
-                    <li class="mt-3"><a href="#">Blog</a></li>
+                    <li class="mt-3"><a href="{{ route('products.index') }}">Category</a></li>
                 </ul>
             </div>
             <div class="col-md-3 mt-4 mt-sm-0">
