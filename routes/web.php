@@ -21,25 +21,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-
-
 // Route untuk Login
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 
 // Route untuk Register
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 
-Route::get('/category/{categorySlug}', [ProductController::class, 'category'])->name('products.category');
-
-Route::get('/category/{tagSlug}', [ProductController::class, 'tag'])->name('products.tag');
-
-Route::get('/{categorySlug}/{productSlug}' , [ProductController::class, 'show'])->name('products.show');
-
-
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/home', [HomeController::class, 'index'])->name('home');
-// });
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/category/{categorySlug}', [ProductController::class, 'category'])->name('products.category');
+    Route::get('/category/{tagSlug}', [ProductController::class, 'tag'])->name('products.tag');
+    Route::get('/{categorySlug}/{productSlug}', [ProductController::class, 'show'])->name('products.show');
+});
