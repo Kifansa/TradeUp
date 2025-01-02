@@ -42,13 +42,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        // return view('shop::index');
-
-        // $product = Product::get();
-        // dd($product);
-        // $this->data['products'] = Product::paginate($this->perPage);
-        // $this->data['products'] = Product::paginate($this->perPage);
-
         $options = [
             'per_page' => $this->perPage,
         ];

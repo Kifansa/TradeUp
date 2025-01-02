@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #3C3D37">
+    <div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #cee071">
         <div class="card p-4 text-center"
             style="width: 450px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);background-color: black">
             <div class="mb-4">
