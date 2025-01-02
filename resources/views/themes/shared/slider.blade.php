@@ -3,7 +3,7 @@
         <a class="nav-link active" href="#">Home</a>
         <a class="nav-link" href="#">Best Seller</a>
         <a class="nav-link" href="#">New Arrival</a>
-        <a class="nav-link" href="#">Blog</a>
+        <a class="nav-link" href="{{ route('products.index') }}">Catergory</a>
     </div>
 </div>
 

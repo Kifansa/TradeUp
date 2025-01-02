@@ -7,12 +7,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
 use App\Traits\UuidTrait;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,UuidTrait;
+    use HasApiTokens, HasFactory, Notifiable, UuidTrait;
+
+    /**
+     * Set the primary key type to UUID
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
+     * Don't use auto-incrementing for the primary key
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.

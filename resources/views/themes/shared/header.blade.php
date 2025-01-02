@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light fixed-top py-4 shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="#">Indo<span>Toko</span></a>
+        <a class="navbar-brand" href="#">Trade<span>Up</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,12 +38,31 @@
                         <li><a class="dropdown-item" href="#">Blog</a></li>
                     </ul>
                 </div>
-                <li class="nav-item mt-5 mt-lg-0 text-center">
-                    <a class="nav-link btn-second me-lg-3" href="#">Login</a>
+
+                <!-- Jika sudah login, tampilkan username -->
+                @auth
+                <li class="nav-item mt-3 mt-lg-0 text-center">
+                    <a class="nav-link" href="#">
+                        {{ Auth::user()->name }} <!-- Tampilkan nama pengguna -->
+                    </a>
                 </li>
                 <li class="nav-item mt-3 mt-lg-0 text-center">
-                    <a class="nav-link btn-first" href="#">Register</a>
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
+                <!-- Jika belum login, tampilkan tombol login dan register -->
+                @else
+                <li class="nav-item mt-5 mt-lg-0 text-center">
+                    <a class="nav-link btn-second me-lg-3" href="{{ route('login') }}">Login</a>
+                </li>
+                <li class="nav-item mt-3 mt-lg-0 text-center">
+                    <a class="nav-link btn-first" href="{{ route('register') }}">Register</a>
+                </li>
+                @endauth
             </ul>
         </div>
     </div>
