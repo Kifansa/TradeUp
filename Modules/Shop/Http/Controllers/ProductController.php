@@ -7,22 +7,40 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Modules\Shop\Entities\Product;
 use Modules\Shop\Repositories\Front\Interfaces\ProductRepositoryInterface;
+use Modules\Shop\Repositories\Front\Interfaces\CategoryRepositoryInterface;
+use Modules\Shop\Repositories\Front\Interfaces\TagRepositoryInterface;
+use Illuminate\Support\Arr;
 
 class ProductController extends Controller
 {
     protected $productRepository;
-    
-    public function __construct(ProductRepositoryInterface $productRepository)
+    protected $categoryRepository;
+    protected $tagRepository;
+    protected $sortingQuery;
+
+    public function __construct(ProductRepositoryInterface $productRepository, CategoryRepositoryInterface $categoryRepository, TagRepositoryInterface $tagRepository)
     {
         parent::__construct();
 
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->tagRepository = $tagRepository;
+
+        $this->data['categories'] = $this->categoryRepository->findAll();
+
+        $this->sortingQuery = null;
+        $this->data['sortingQuery'] = $this->sortingQuery;
+        $this->data['sortingOptions'] = [
+            '' => '-- Sort Products --',
+            '?sort=publish_date&order=desc' => 'Newest Item',
+            '?sort=publish_date&order=asc' => 'Latest Item',
+        ];
     }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         // return view('shop::index');
 
@@ -34,10 +52,53 @@ class ProductController extends Controller
         $options = [
             'per_page' => $this->perPage,
         ];
-        
+
+        if ($request->get('sort')) {
+            $sort = $this->sortingRequest($request);
+            $options['sort'] = $sort;
+
+            $this->sortingQuery = '?sort=' . $sort['sort'] . '&order=' . $sort['order'];
+
+            $this->data['sortingQuery'] = $this->sortingQuery;
+        }
+
         $this->data['products'] = $this->productRepository->findAll($options);
         // dd($this->data);
         return $this->loadTheme('products.index', $this->data);
+    }
+
+    public function category($categorySlug)
+    {
+        $category = $this->categoryRepository->findBySlug($categorySlug);
+
+        $options = [
+            'per_page' => $this->perPage,
+            'filter' => [
+                'category' => $categorySlug,
+            ]
+        ];
+
+        $this->data['products'] = $this->productRepository->findAll($options);
+        $this->data['category'] = $category;
+
+        return $this->loadTheme('products.category', $this->data);
+    }
+
+    public function tag($tagSlug)
+    {
+        $tag = $this->tagRepository->findBySlug($tagSlug);
+
+        $options = [
+            'per_page' => $this->perPage,
+            'filter' => [
+                'tag' => $tagSlug,
+            ]
+        ];
+
+        $this->data['products'] = $this->productRepository->findAll($options);
+        $this->data['tag'] = $tag;
+
+        return $this->loadTheme('products.tag', $this->data);
     }
 
     /**
@@ -64,9 +125,21 @@ class ProductController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    // public function show($id)
+    // {
+    //     // return view('shop::show');
+
+    // }
+
+    public function show($categorySlug, $productSlug)
     {
-        return view('shop::show');
+        $sku = Arr::last(explode('-', $productSlug));
+
+        $product = $this->productRepository->findBySKU($sku);
+
+        $this->data['product'] = $product;
+
+        return $this->loadTheme('products.show', $this->data);
     }
 
     /**
@@ -98,5 +171,22 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    function sortingRequest(Request $request) {
+        $sort = [];
+
+        if ($request->get('sort') && $request->get('order')) {
+            $sort = [
+                'sort' => $request->get('sort'),
+                'order' => $request->get('order'),
+            ];
+        } else if ($request->get('sort')) {
+            $sort = [
+                'sort' => $request->get('sort'),
+                'order' => 'desc',
+            ];
+        }
+        return $sort;
     }
 }

@@ -15,56 +15,7 @@
         <div class="container">
             <div class="row">
                 <aside class="col-lg-3 col-md-4 mb-6 mb-md-0">
-                    <div class="sidebar">
-                        <div class="sidebar-widget">
-                            <div class="widget-title">
-                                <h5>Categories</h5>
-                            </div>
-                            <div class="widget-content widget-categories">
-                                <ul class="nav nav-category">
-                                    <li class="nav-item border-bottom w-100">
-                                        <a class="nav-link active" aria-current="page" href="#">Clothing <i
-                                                class='bx bx-chevron-right'></i></a>
-                                    </li>
-                                    <li class="nav-item border-bottom w-100">
-                                        <a class="nav-link" href="#">Shoes <i class='bx bx-chevron-right'></i></a>
-                                    </li>
-                                    <li class="nav-item border-bottom w-100">
-                                        <a class="nav-link" href="#">Bags <i class='bx bx-chevron-right'></i></a>
-                                    </li>
-                                    <li class="nav-item border-bottom w-100">
-                                        <a class="nav-link" href="#">Electronics <i
-                                                class='bx bx-chevron-right'></i></a>
-                                    </li>
-                                    <li class="nav-item border-bottom w-100">
-                                        <a class="nav-link" href="#">Accessories <i
-                                                class='bx bx-chevron-right'></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="sidebar-widget mt-4">
-                            <div class="widget-title">
-                                <h5>Price Range</h5>
-                            </div>
-                            <div class="widget-content shop-by-price">
-                                <form method="GET" action="products.html">
-                                    <div class="price-filter">
-                                        <div class="price-filter-inner">
-                                            <div id="slider-range"></div>
-                                            <div class="price_slider_amount">
-                                                <div class="label-input d-lg-flex justify-content-between">
-                                                    <input type="text" id="amount" name="price"
-                                                        placeholder="Add Your Price" />
-                                                    <button type="submit" class="btn-first-sm">Filter</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    @include('themes.products.sidebar', ['categories' => $categories])
                 </aside>
                 <section class="col-lg-9 col-md-12 products">
                     <div class="card mb-4 bg-light border-0 section-header">
@@ -80,24 +31,10 @@
                             </div>
                             <div class="d-flex mt-2 mt-lg-0">
                                 <div class="me-2 flex-grow-1">
-                                    <!-- select option -->
-                                    <select class="form-select">
-                                        <option selected="">Show: 50</option>
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                    </select>
+                                    &nbsp;
                                 </div>
                                 <div>
-                                    <!-- select option -->
-                                    <select class="form-select">
-                                        <option selected="">Sort by: Featured</option>
-                                        <option value="Low to High">Price: Low to High</option>
-                                        <option value="High to Low"> Price: High to Low</option>
-                                        <option value="Release Date"> Release Date</option>
-                                        <option value="Avg. Rating"> Avg. Rating</option>
-
-                                    </select>
+                                    {!! html()->select('sorting', $sortingOptions, $sortingQuery)->class(['form-select'])->attribute('onchange', 'this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);') !!}
                                 </div>
                             </div>
                         </div>
