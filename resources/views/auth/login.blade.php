@@ -23,23 +23,27 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group mb-3">
-                            <input id="usrename" type="username" name="username" style="background-color: black; color: white" class="form-control login-input @error('username') is-invalid @enderror" placeholder="Username" plac value="{{ old('username') }}" required>
-                            @error('username')
+                            <input id="username" type="text" name="email" style="background-color: black; color: white"
+                                   class="form-control login-input @error('email') is-invalid @enderror"
+                                   placeholder="Email" value="{{ old('email') }}" required>
+                            @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
                         <div class="form-group mb-4">
-                            <input id="password" type="password" name="password"  style="background-color: black; color: white " class="form-control login-input @error('password') is-invalid @enderror" placeholder="Password" required>
+                            <input id="password" type="password" name="password" style="background-color: black; color: white"
+                                   class="form-control login-input @error('password') is-invalid @enderror" placeholder="Password" required>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 mt-4 login-button rounded-pill" >Log In</button>
+                        <button type="submit" class="btn btn-primary w-100 mt-4 login-button rounded-pill">Log In</button>
                     </form>
+
                     <div class="mb-3 font-weight-bold" style="color: #70767b">
                         Don't have an account?
                         <a href="{{ route('register') }}" class="text-decoration-none">Register</a>

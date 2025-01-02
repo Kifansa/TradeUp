@@ -18,12 +18,12 @@
             <div class="col-md-3 mt-4 mt-sm-0">
                 <h3 class="mb-3">Company</h3>
                 <a href="#">john@example.com</a>
-                <p>Jln. Tamansiswa, No 32 Yogyakarta Indonesia</p>
+                <p>Jln. Ubi VII, No 5 Surabaya Indonesia</p>
             </div>
         </div>
         <div class="row row-copy mt-4 mt-sm-0">
             <div class="col-md-6">
-                <p>&copy; 2023 IndoToko. All rights reserved.</p>
+                <p>&copy; 2023 TradeUp. All rights reserved.</p>
             </div>
             <div class="col-md-6 text-sm-end">
                 <a href="#"><i class='bx bxl-instagram-alt'></i></a>

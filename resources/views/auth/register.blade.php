@@ -23,15 +23,15 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group mb-3">
-                            <input id="username" type="text" name="username" style="background-color: black; color: white" class="form-control login-input @error('username') is-invalid @enderror" placeholder="Username" value="{{ old('username') }}" required>
-                            @error('username')
+                            <input id="name" type="text" name="name" class="form-control login-input @error('name') is-invalid @enderror" placeholder="Username" value="{{ old('name') }}" required>
+                            @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <input id="email" type="email" name="email" style="background-color: black; color: white" class="form-control login-input @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required>
+                            <input id="email" type="email" name="email" class="form-control login-input @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <input id="password" type="password" name="password" style="background-color: black; color: white;" class="form-control login-input @error('password') is-invalid @enderror" placeholder="Password" required>
+                            <input id="password" type="password" name="password" class="form-control login-input @error('password') is-invalid @enderror" placeholder="Password" required>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -47,10 +47,11 @@
                             @enderror
                         </div>
                         <div class="form-group mb-4">
-                            <input id="password_confirmation" type="password" name="password_confirmation" style="background-color: black; color:white;" class="form-control login-input" placeholder="Confirm Password" required>
+                            <input id="password_confirmation" type="password" name="password_confirmation" class="form-control login-input" placeholder="Confirm Password" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 mt-4 login-button rounded-pill">Register</button>
                     </form>
+
                     <div class="mb-3 font-weight-bold" style="color: #70767b">
                         Already have an account?
                         <a href="{{ route('login') }}" class="text-decoration-none">Log In</a>

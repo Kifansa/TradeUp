@@ -25,6 +25,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
+// Route untuk Login
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+
+// Route untuk Register
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/home', [HomeController::class, 'index'])->name('home');
 // });
